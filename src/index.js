@@ -1,9 +1,14 @@
+//import './tailwind.css'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+//import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+const _debugTailwindPurge = () => (
+    <div className="bg-black text-white p-4 rounded-xl text-gray-300">
+        Tailwind test
+    </div>
+);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
