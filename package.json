@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./src/index.css -o ./src/tailwind.css --minify",
+    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./public/tailwind.css",
     "start": "npm run build:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
