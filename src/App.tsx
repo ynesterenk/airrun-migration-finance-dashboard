@@ -1,8 +1,8 @@
-import { Card, CardContent } from "./components/ui/card.tsx";
-import { Input } from "./components/ui/input.tsx";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/tabs.tsx";
+import { Card, CardContent } from "components/ui/card";
+import { Input } from "components/ui/input";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "components/ui/tabs";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Label } from "recharts";
-import { motion } from "framer-motion";
+//import { motion } from "framer-motion";
 
 const mockNews = [
   { title: "Europe’s Stock Surge Outpaces Wall Street in Historic Run", source: "Bloomberg", time: "10:35 AM" },
@@ -176,7 +176,7 @@ export default function FinanceAppMockup() {
              style={{ fill: '#ccc', fontSize: 14 }}
               />
           </XAxis>
-              <YAxis stroke="#ccc" domain={[108, 110]} />
+              <YAxis stroke="#ccc" domain={[108, 110]} tickFormatter={(val) => val.toFixed(2)} />
               <Tooltip contentStyle={{ backgroundColor: '#1f2937', borderColor: '#60a5fa', color: '#fff' }} />
               <Line type="monotone" dataKey="price" stroke="#60a5fa" strokeWidth={2} dot={false} />
             </LineChart>
