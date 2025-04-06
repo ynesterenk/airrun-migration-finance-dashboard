@@ -1,4 +1,5 @@
 export const fetchCrossAssetsData = async () => {
+  // Sample data migrated from public/src/applications/cross-assets.js
   return [
     { ric: ".NDX", name: "NASDAQ 100", last: 15010.43, change: "+0.00" },
     { ric: ".FTSE", name: "FTSE 100 INDEX", last: 7455.68, change: "-0.14%" },
