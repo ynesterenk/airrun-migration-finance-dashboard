@@ -1,6 +1,6 @@
-import { Card, CardContent } from "components/ui/card";
-import { Input } from "components/ui/input";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Label } from "recharts";
 //import { motion } from "framer-motion";
 

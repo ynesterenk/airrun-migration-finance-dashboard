@@ -1,15 +1,17 @@
+// components.json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "config": "",
+    "config": "tailwind.config.js",
     "baseColor": "neutral",
-    "css": "src/input.css",
+    "css": "src/index.css",
     "cssVariables": true,
     "prefix": ""
   },
+
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
