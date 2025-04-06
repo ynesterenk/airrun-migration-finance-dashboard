@@ -1,43 +1,34 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { mockCrossAssetData, CrossAssetItem } from "./data";
-
-// Helper function to determine text color based on value
-const getValueColor = (value: string): string => {
-    const numericPart = value.replace(/[^\d.-]/g, '');
-    const num = parseFloat(numericPart);
-
-    if (isNaN(num) || num === 0) {
-        return "text-gray-400";
-    } else if (num > 0) {
-        return "text-green-400";
-    } else {
-        return "text-red-400";
-    }
+import { crossAssetData, CrossAssetItem } from "./data";
+const getChangeColor = (change: string): string => {
+    return change.startsWith("+") ? "text-green-400" : "text-red-400";
 };
-
 export function CrossAssetMonitor() {
     return (
-        <Card className="bg-gray-900 text-white">
+        <Card className="bg-gray-900 text-white"> {/* Keep layout class for now */}
             <CardContent className="p-4">
+                {/* Removed redundant H1, kept H2 as title */}
                 <h2 className="text-xl text-gray-300 mb-4 text-center">Cross Asset Monitor</h2>
                 <table className="w-full text-sm">
                     <thead className="text-gray-400 border-b border-gray-700">
                     <tr>
-                        <th className="text-left py-2 px-2">RIC</th>
-                        <th className="text-left py-2 px-2">Name</th>
-                        <th className="text-right py-2 px-2">Last</th>
-                        <th className="text-right py-2 px-2">Change</th>
+                        <th className="text-left py-2 px-1">RIC</th>
+                        <th className="text-left py-2 px-1">Name</th>
+                        <th className="text-right py-2 px-1">Last</th>
+                        <th className="text-right py-2 px-1">Change</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {mockCrossAssetData.map((item: CrossAssetItem) => (
+                    {crossAssetData.map((item: CrossAssetItem) => ( // Use implicit return with parentheses
                         <tr key={item.ric} className="border-b border-gray-800">
-                            <td className="py-2 px-2 text-blue-400">{item.ric}</td>
-                            <td className="py-2 px-2 text-blue-400">{item.name}</td>
-                            <td className="text-right py-2 px-2">{item.last}</td>
-                            <td className={`text-right py-2 px-2 ${getValueColor(item.change)}`}>{item.change}</td>
+                            <td className="text-white py-1 px-1">{item.ric}</td>
+                            {/* Removed idx check for color - apply consistently or use different logic */}
+                            <td className={`py-1 px-1 text-blue-400`}>{item.name}</td>
+                            <td className={`text-right py-1 px-1 text-blue-400`}>{item.last.toFixed(2)}</td>
+                            <td className={`text-right py-1 px-1 ${getChangeColor(item.change)}`}>{item.change}</td>
                         </tr>
                     ))}
+                    {/* Ensure no stray spaces/newlines manually typed here either */}
                     </tbody>
                 </table>
             </CardContent>
