@@ -3,10 +3,31 @@ import { fetchCrossAssetsData } from './data';
 
 const CrossAssets: React.FC = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchCrossAssetsData().then((data) => setData(data));
+    const getData = async () => {
+      try {
+        const data = await fetchCrossAssetsData();
+        setData(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getData();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div>
