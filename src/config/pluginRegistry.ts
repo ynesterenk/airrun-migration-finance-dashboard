@@ -1,10 +1,9 @@
 import React from 'react';
 import { NewsFeed } from '@/plugins/NewsFeed';
-import { CrossAssetMonitor } from '@/plugins/CrossAssetMonitor';
 import { HistoricalChart } from '@/plugins/HistoricalChart';
 import { IntradayChart } from '@/plugins/IntradayChart';
 import { CurrencyExchangeRate } from '@/plugins/CurrencyExchangeRate';
-import { CrossAssets } from '@/plugins/CrossAssets'; // Import the new CrossAssets plugin
+import CrossAssets from '../plugins/CrossAssets';
 
 // Define a type for better safety (optional but recommended)
 export type PluginComponentType = React.ComponentType<any>; // Use specific props type if needed
@@ -24,11 +23,7 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         // Example layout hint:
         // layout: { colSpan: 2 }
     },
-    'crossAsset': {
-        id: 'crossAsset',
-        component: CrossAssetMonitor,
-    },
-    'currencyExchange': { 
+    'currencyExchange': {
         id: 'currencyExchange',
         component: CurrencyExchangeRate,
     },
@@ -42,7 +37,7 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         // Example layout hint:
         // layout: { colSpan: 2 }
     },
-    'crossAssets': { // Register the new CrossAssets plugin
+    'crossAssets': {
         id: 'crossAssets',
         component: CrossAssets,
     },
