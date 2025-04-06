@@ -1,6 +1,5 @@
 import React from 'react';
 import { NewsFeed } from '@/plugins/NewsFeed';
-import { CrossAssetMonitor } from '@/plugins/CrossAssetMonitor';
 import { HistoricalChart } from '@/plugins/HistoricalChart';
 import { IntradayChart } from '@/plugins/IntradayChart';
 import { CurrencyExchangeRate } from '@/plugins/CurrencyExchangeRate';
@@ -22,10 +21,6 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         component: NewsFeed,
         // Example layout hint:
         // layout: { colSpan: 2 }
-    },
-    'crossAsset': {
-        id: 'crossAsset',
-        component: CrossAssetMonitor,
     },
     'currencyExchange': { // <-- Add the new plugin entry
         id: 'currencyExchange',
