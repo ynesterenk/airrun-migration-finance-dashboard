@@ -1,3 +1,4 @@
 import CrossAssets from './CrossAssets';
+import AdditionalModule from './AdditionalModule';
 
-export default CrossAssets;
+export { CrossAssets, AdditionalModule };
