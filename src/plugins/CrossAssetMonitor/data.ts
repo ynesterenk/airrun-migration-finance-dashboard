@@ -8,3 +8,35 @@ export const crossAssetData = [
 ];
 
 export type CrossAssetItem = typeof crossAssetData[0];
+
+export interface CurrencyRateItem {
+    currency: string;
+    flag: string;
+    price: number;
+    dayChange: number;
+    percentChange: number;
+}
+
+export const mockCurrencyData: CurrencyRateItem[] = [
+    {
+        currency: "USD",
+        flag: "🇺🇸",
+        price: 1.0,
+        dayChange: 0.0,
+        percentChange: 0.0
+    },
+    {
+        currency: "EUR",
+        flag: "🇪🇺",
+        price: 1.18,
+        dayChange: 0.01,
+        percentChange: 0.85
+    },
+    {
+        currency: "JPY",
+        flag: "🇯🇵",
+        price: 0.0091,
+        dayChange: -0.0001,
+        percentChange: -1.09
+    }
+];
