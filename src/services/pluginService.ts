@@ -27,3 +27,21 @@ export const getActivePlugins = async (): Promise<ActivePluginInfo[]> => {
     // Map IDs to the expected structure (if the API just returns IDs)
     return activePluginIds.map(id => ({ id }));
 };
+
+import plugins from '@/config/pluginRegistry';
+
+class PluginService {
+    private plugins: any[];
+
+    constructor() {
+        this.plugins = plugins;
+    }
+
+    getPlugins() {
+        return this.plugins;
+    }
+}
+
+const pluginService = new PluginService();
+
+export default pluginService;
