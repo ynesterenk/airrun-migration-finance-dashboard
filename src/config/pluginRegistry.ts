@@ -27,7 +27,7 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         id: 'crossAsset',
         component: CrossAssetMonitor,
     },
-    'currencyExchange': { // <-- Add the new plugin entry
+    'currencyExchange': {
         id: 'currencyExchange',
         component: CurrencyExchangeRate,
     },
@@ -53,3 +53,19 @@ export const getPluginComponent = (id: string): PluginComponentType | undefined 
 export const getPluginConfig = (id: string): PluginConfig | undefined => {
     return pluginRegistry[id];
 }
+
+import { CrossAssetMonitor } from '@/plugins/CrossAssetMonitor';
+import { CurrencyExchangeRate } from '@/plugins/CurrencyExchangeRate';
+
+const plugins = [
+    {
+        name: 'Currency Exchange Rate',
+        component: CurrencyExchangeRate
+    },
+    {
+        name: 'Cross Asset Monitor',
+        component: CrossAssetMonitor
+    }
+];
+
+export default plugins;
