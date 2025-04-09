@@ -23,11 +23,11 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         // Example layout hint:
         // layout: { colSpan: 2 }
     },
-    'crossAsset': {
-        id: 'crossAsset',
+    'crossAssetMonitor': { // Add entry for CrossAssetMonitor
+        id: 'crossAssetMonitor',
         component: CrossAssetMonitor,
     },
-    'currencyExchange': { // <-- Add the new plugin entry
+    'currencyExchange': {
         id: 'currencyExchange',
         component: CurrencyExchangeRate,
     },
