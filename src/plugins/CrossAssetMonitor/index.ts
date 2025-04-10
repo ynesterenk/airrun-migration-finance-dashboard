@@ -1,1 +1,1 @@
-export { CrossAssetMonitor } from './CrossAssetMonitor';
+export { default as CrossAssetMonitor } from './CrossAssetMonitor';
