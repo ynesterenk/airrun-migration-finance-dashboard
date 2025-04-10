@@ -19,8 +19,7 @@ export const getActivePlugins = async (): Promise<ActivePluginInfo[]> => {
 
     // For this PoC, return a hardcoded list of plugin IDs
     // You can change this array to test loading different plugins
-    const activePluginIds: string[] = ['news', 'currencyExchange', 'history', 'intraday'];
-    // const activePluginIds: string[] = ['news', 'intraday']; // Example: load only two
+    const activePluginIds: string[] = ['news', 'crossAssetMonitor', 'history', 'intraday']; // Replace currencyExchange with crossAssetMonitor
 
     console.log("Received active plugins:", activePluginIds);
 
