@@ -27,3 +27,14 @@ export const getActivePlugins = async (): Promise<ActivePluginInfo[]> => {
     // Map IDs to the expected structure (if the API just returns IDs)
     return activePluginIds.map(id => ({ id }));
 };
+
+import pluginRegistry from '../config/pluginRegistry';
+
+const activePlugins = [
+    pluginRegistry.crossAssetMonitor,
+    pluginRegistry.historicalChart,
+    pluginRegistry.intradayChart,
+    pluginRegistry.newsFeed,
+];
+
+export default activePlugins;
