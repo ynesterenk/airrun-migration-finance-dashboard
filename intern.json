@@ -1,1 +1,29 @@
-{\n  \"loader\": {\n    \"script\": \"node_modules/dojo-loader/dojo.js\",\n    \"config\": \"dojoConfig\"\n  },\n  \"suites\": [\n    \"tests/unit/cross-assets.test.js\",\n    \"tests/unit/news.test.js\",\n    \"tests/unit/history-chart.test.js\",\n    \"tests/unit/intraday-chart.test.js\"\n  ],\n  \"functionalSuites\": [\n    \"tests/functional/cross-assets.test.js\",\n    \"tests/functional/news.test.js\",\n    \"tests/functional/history-chart.test.js\",\n    \"tests/functional/intraday-chart.test.js\"\n  ],\n  \"functionalCoverage\": false,\n  \"serveOnly\": false,\n  \"baseUrl\": \"http://localhost:8000/\",\n  \"reporters\": [\"runner\"]\n}
+{
+  "loader": {
+    "script": "dojo-loader",
+    "options": {
+      "packages": [
+        { "name": "dojo", "location": "./public/src/dojo" },
+        { "name": "dijit", "location": "./public/src/dijit" },
+        { "name": "dojox", "location": "./public/src/dojox" },
+        { "name": "applications", "location": "./public/src/applications" }
+      ]
+    }
+  },
+  "suites": [
+    "tests/unit/cross-assets.test.js",
+    "tests/unit/news.test.js",
+    "tests/unit/history-chart.test.js",
+    "tests/unit/intraday-chart.test.js"
+  ],
+  "functionalSuites": [
+    "tests/functional/cross-assets.test.js",
+    "tests/functional/news.test.js",
+    "tests/functional/history-chart.test.js",
+    "tests/functional/intraday-chart.test.js"
+  ],
+  "functionalCoverage": false,
+  "serveOnly": false,
+  "baseUrl": "http://localhost:8000/",
+  "reporters": ["runner"]
+}
