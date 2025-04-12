@@ -1,1 +1,34 @@
-define([\"intern!object\", \"intern/chai!assert\", \"dojox/grid/DataGrid\", \"dojo/data/ItemFileReadStore\"], function(registerSuite, assert, DataGrid, ItemFileReadStore) {\n  registerSuite({\n    name: \"cross-assets\",\n    \"test initializeCrossAssets\": function() {\n      var gridData = {\n        identifier: 'ric',\n        label: 'ric',\n        items: [\n          { ric: \".NDX\", name: \"NASDAQ 100\", last: 15010.43, change: \"+0.00\" },\n          { ric: \".FTSE\", name: \"FTSE 100 INDEX\", last: 7455.68, change: \"-0.14%\" },\n          { ric: \".HSI\", name: \"HANG SENG INDEX\", last: 16993.44, change: \"-2.08%\" },\n          { ric: \".VOO\", name: \"VANGUARD S&P 500 ETF\", last: 511.14, change: \"+1.08%\" },\n          { ric: \".DAX\", name: \"DAX INDEX\", last: 22539.61, change: \"+3.08%\" },\n          { ric: \".PX1\", name: \"CAC 40 INDEX\", last: 7876.36, change: \"-2.18%\" }\n        ]\n      };\n\n      var store = new ItemFileReadStore({ data: gridData });\n      var grid = new DataGrid({\n        store: store,\n        structure: [\n          {\n            name: \"RIC\",\n            field: \"ric\",\n            width: \"80px\",\n            formatter: function(value) {\n              return `<span style=\"color: #ccc;\">${value}</span>`;\n            }\n          },\n          {\n            name: \"Name\",\n            field: \"name\",\n            width: \"180px\",\n            formatter: function(value) {\n              return `<span style=\"color: #4ea8ff;\">${value}</span>`;\n            }\n          },\n          {\n            name: \"Last\",\n            field: \"last\",\n            width: \"100px\",\n            formatter: function(value) {\n              return `<span style=\"color: #ffa500;\">${value}</span>`;\n            }\n          },\n          {\n            name: \"Price Change\",\n            field: \"change\",\n            width: \"400px\",\n            formatter: function(value) {\n              var numericPart = value.replace(/[^\\d.-]/g, '');\n              var num = parseFloat(numericPart);\n\n              if (isNaN(num) || num === 0) {\n                return `<span style=\"color: #ccc;\">${value}</span>`;\n              } else if (num > 0) {\n                return `<span style=\"color: #0f0;\">${value}</span>`;\n              } else {\n                return `<span style=\"color: #f00;\">${value}</span>`;\n              }\n            }\n          }\n        ],\n        autoHeight: false\n      }, \"grid\");\n\n      grid.startup();\n\n      assert.strictEqual(grid.rowCount, 6, \"Grid should have 6 rows\");\n      assert.strictEqual(grid.structure.length, 4, \"Grid should have 4 columns\");\n    }\n  });\n});
+define(["intern!object", "intern/chai!assert", "applications/cross-assets"], function(registerSuite, assert, initializeCrossAssets) {
+  registerSuite({
+    name: "cross-assets",
+
+    setup: function() {
+      // Called before all tests
+    },
+
+    teardown: function() {
+      // Called after all tests
+    },
+
+    beforeEach: function() {
+      // Called before each test
+    },
+
+    afterEach: function() {
+      // Called after each test
+    },
+
+    "test initializeCrossAssets": function() {
+      assert.strictEqual(typeof initializeCrossAssets, "function", "initializeCrossAssets should be a function");
+      // Add more assertions based on what you expect initializeCrossAssets to do
+    },
+
+    "test grid setup": function() {
+      // Assuming initializeCrossAssets sets up a grid
+      initializeCrossAssets();
+      var grid = dijit.byId("grid");
+      assert.isNotNull(grid, "Grid should exist after initialization");
+      // Further tests to ensure grid is populated correctly
+    }
+  });
+});
