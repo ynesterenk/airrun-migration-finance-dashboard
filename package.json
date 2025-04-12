@@ -1,6 +1,8 @@
 {
-  "name": "finance-dashboard",
-  "version": "0.1.0",
+  "name": "finance-dashboard-dojo",
+  "version": "1.0.0",
+  "description": "A simple Dojo + Dijit app",
+  "main": "public/index.html",
   "private": true,
   "dependencies": {
     "@radix-ui/react-tabs": "^1.1.3",
@@ -19,10 +21,16 @@
   },
   "scripts": {
     "dev": "vite",
-    "start": "vite",
+    "start": "echo Starting Python server for ./public on http://127.0.0.1:8080 ... && python -m http.server --directory public 8080",
+    "comment": "If port 8080 is taken, change it here and in the echo message.",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "npx intern",
+    "test:unit": "npx intern run -m unit",
+    "test:functional": "npx intern run -m functional"
   },
+  "author": "Yevgen",
+  "license": "MIT",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -53,6 +61,8 @@
     "tailwindcss": "^4.1.3",
     "typescript": "^5.8.3",
     "vite": "^6.2.5",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "intern": "^4.9.x",
+    "chromedriver": "^latest"
   }
 }
