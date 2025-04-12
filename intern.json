@@ -25,5 +25,34 @@
   "functionalCoverage": false,
   "serveOnly": false,
   "baseUrl": "http://localhost:8000/",
-  "reporters": ["runner"]
+  "reporters": ["runner"],
+  "intern": {
+    "loader": {
+      "script": "dojo-loader",
+      "options": {
+        "packages": [
+          { "name": "dojo", "location": "./public/src/dojo" },
+          { "name": "dijit", "location": "./public/src/dijit" },
+          { "name": "dojox", "location": "./public/src/dojox" },
+          { "name": "applications", "location": "./public/src/applications" }
+        ]
+      }
+    },
+    "suites": [
+      "tests/unit/cross-assets.test.js",
+      "tests/unit/news.test.js",
+      "tests/unit/history-chart.test.js",
+      "tests/unit/intraday-chart.test.js"
+    ],
+    "functionalSuites": [
+      "tests/functional/cross-assets.test.js",
+      "tests/functional/news.test.js",
+      "tests/functional/history-chart.test.js",
+      "tests/functional/intraday-chart.test.js"
+    ],
+    "functionalCoverage": false,
+    "serveOnly": false,
+    "baseUrl": "http://localhost:8000/",
+    "reporters": ["runner"]
+  }
 }
