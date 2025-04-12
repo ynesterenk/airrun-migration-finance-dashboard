@@ -1,1 +1,46 @@
-define([\"intern!object\", \"intern/chai!assert\", \"dojox/charting/Chart2D\", \"dojox/charting/themes/Claro\"], function(registerSuite, assert, Chart2D, theme) {\n  registerSuite({\n    name: \"history-chart\",\n    \"test initializeHistoryChart\": function() {\n      theme.chart.fill = \"rgb(16,24,40)\";\n      theme.chart.stroke = { color: \"rgb(16,24,40)\", width: 0 };\n      theme.plotarea.fill = \"rgb(16,24,40)\";\n      theme.plotarea.stroke = null;\n\n      var priceValues = [144.47, 149.43, 140.14, 140.11, 135.91, 133.23, 131.76, 136.24, 133.57, 137.71];\n      const priceHistory = priceValues.map((price, index) => ({\n        x: index,\n        y: price\n      }));\n\n      var historyChart = new Chart2D(\"historicalChart\");\n      historyChart.setTheme(theme);\n      historyChart.addPlot(\"default\", { type: \"Lines\", markers: true });\n      historyChart.addAxis(\"x\", { labels: [] });\n      historyChart.addAxis(\"y\", { vertical: true });\n      historyChart.addSeries(\"Prices\", priceHistory, {\n        stroke: { color: \"green\", width: 2 },\n        marker: \"circle\",\n        markers: true,\n        fill: \"rgb(109,117,233)\"\n      });\n      historyChart.render();\n      historyChart.resize();\n\n      assert.strictEqual(historyChart.series.length, 1, \"Chart should have 1 series\");\n    }\n  });\n});
+define(["intern!object", "intern/chai!assert", "applications/history-chart"], function(registerSuite, assert, initializeHistoryChart) {
+  registerSuite({
+    name: "history-chart",
+
+    setup: function() {
+      // Called before all tests
+    },
+
+    teardown: function() {
+      // Called after all tests
+    },
+
+    beforeEach: function() {
+      // Called before each test
+    },
+
+    afterEach: function() {
+      // Called after each test
+    },
+
+    "test initializeHistoryChart": function() {
+      assert.strictEqual(typeof initializeHistoryChart, "function", "initializeHistoryChart should be a function");
+
+      const theme = {
+        chart: {
+          fill: "rgb(16,24,40)",
+          stroke: { color: "rgb(16,24,40)", width: 0 }
+        },
+        plotarea: {
+          fill: "rgb(16,24,40)",
+          stroke: null
+        }
+      };
+
+      const priceValues = [144.47, 149.43, 140.14, 140.11, 135.91, 133.23, 131.76, 136.24, 133.57, 137.71];
+      const priceHistory = priceValues.map((price, index) => ({
+        x: index,
+        y: price
+      }));
+
+      const historyChart = initializeHistoryChart("historicalChart", theme, priceHistory);
+
+      assert.strictEqual(historyChart.series.length, 1, "Chart should have 1 series");
+    }
+  });
+});
