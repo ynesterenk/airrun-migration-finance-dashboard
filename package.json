@@ -11,7 +11,9 @@
     "test:functional": "npx intern run -m functional",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "webdriver-update": "npx intern config.webdriver.update",
+    "webdriver-start": "npx intern config.webdriver.start"
   },
   "author": "Yevgen",
   "license": "MIT",
@@ -45,7 +47,7 @@
     "vite": "^6.2.5",
     "vite-tsconfig-paths": "^5.1.4",
     "intern": "^4.9.x",
-    "chromedriver": "^..."
+    "chromedriver": "^116.0.0"
   },
   "eslintConfig": {
     "extends": [
