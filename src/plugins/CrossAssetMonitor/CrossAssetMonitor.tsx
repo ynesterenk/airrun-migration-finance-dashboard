@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { crossAssetData, CrossAssetItem } from "./data";
 
 const getChangeColor = (change: string): string => {
@@ -8,9 +8,11 @@ const getChangeColor = (change: string): string => {
 
 export function CrossAssetMonitor() {
     return (
-        <Card className="bg-gray-900 text-white">
-            <CardContent className="p-4">
-                <h2 className="text-xl text-gray-300 mb-4 text-center">Cross Asset Monitor</h2>
+        <Card className="bg-gray-900">
+            <CardHeader>
+                <CardTitle className="text-xl text-gray-300 text-center">Cross Asset Monitor</CardTitle>
+            </CardHeader>
+            <CardContent>
                 <Table>
                     <TableHeader>
                         <TableRow>
@@ -22,7 +24,7 @@ export function CrossAssetMonitor() {
                     </TableHeader>
                     <TableBody>
                         {crossAssetData.map((item: CrossAssetItem) => (
-                            <TableRow key={item.ric} className="border-b border-gray-800">
+                            <TableRow key={item.ric}>
                                 <TableCell className="text-white">{item.ric}</TableCell>
                                 <TableCell className="text-blue-400">{item.name}</TableCell>
                                 <TableCell className="text-right text-blue-400">{item.last.toFixed(2)}</TableCell>
