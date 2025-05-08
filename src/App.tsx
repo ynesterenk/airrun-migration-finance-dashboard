@@ -51,22 +51,20 @@ export default function App() {
   }
 
   return (
-      // Keep the original grid layout. Plugins will now fill slots based on order fetched.
-      // Note: If you load fewer than 4 plugins, the layout might look sparse.
-      // Consider a more dynamic grid or adjust based on `loadedPlugins.length` if needed.
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-black text-white min-h-screen">
-        {loadedPlugins.map((plugin) => {
+    <div className="bg-black text-white min-h-screen p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {loadedPlugins.map((plugin, index) => {
           const PluginComponent = plugin.component;
-          // Apply layout hints if available (future enhancement)
-          // const colSpanClass = plugin.layout?.colSpan ? `col-span-${plugin.layout.colSpan}` : '';
-          // const rowSpanClass = plugin.layout?.rowSpan ? `row-span-${plugin.layout.rowSpan}` : '';
-          // Add colSpanClass and rowSpanClass to the component or a wrapper div if needed
-          // For now, render directly:
-          return <PluginComponent key={plugin.key} />;
+          return (
+            <div key={plugin.key} className={`bg-gray-800 p-4 rounded-lg ${index >= 4 ? 'md:col-span-2' : ''}`}>
+              <PluginComponent />
+            </div>
+          );
         })}
         {loadedPlugins.length === 0 && !isLoading && (
-            <div className="col-span-2 text-center text-gray-500">No plugins configured to display.</div>
+          <div className="col-span-1 md:col-span-2 text-center text-gray-500">No plugins configured to display.</div>
         )}
       </div>
+    </div>
   );
 }
