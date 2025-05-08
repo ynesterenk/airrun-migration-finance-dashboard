@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getActivePlugins, ActivePluginInfo } from '@/services/pluginService';
 import { getPluginConfig, PluginConfig } from '@/config/pluginRegistry';
+import SentimentAnalysis from '@/components/SentimentAnalysis'; // Import the SentimentAnalysis component
 
 // Define a type for the loaded plugins state
 type LoadedPlugin = PluginConfig & { key: string };
@@ -51,17 +52,11 @@ export default function App() {
   }
 
   return (
-      // Keep the original grid layout. Plugins will now fill slots based on order fetched.
-      // Note: If you load fewer than 4 plugins, the layout might look sparse.
-      // Consider a more dynamic grid or adjust based on `loadedPlugins.length` if needed.
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-black text-white min-h-screen">
+        {/* Add SentimentAnalysis component to the layout */}
+        <SentimentAnalysis />
         {loadedPlugins.map((plugin) => {
           const PluginComponent = plugin.component;
-          // Apply layout hints if available (future enhancement)
-          // const colSpanClass = plugin.layout?.colSpan ? `col-span-${plugin.layout.colSpan}` : '';
-          // const rowSpanClass = plugin.layout?.rowSpan ? `row-span-${plugin.layout.rowSpan}` : '';
-          // Add colSpanClass and rowSpanClass to the component or a wrapper div if needed
-          // For now, render directly:
           return <PluginComponent key={plugin.key} />;
         })}
         {loadedPlugins.length === 0 && !isLoading && (
