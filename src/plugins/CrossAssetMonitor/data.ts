@@ -8,7 +8,12 @@ export const crossAssetData = [
     { ric: "EURUSD=X", name: "EUR/USD", last: 1.0789, change: "-0.05%", type: "Currency" },
     { ric: "GC=F", name: "Gold", last: 1931.20, change: "+0.22%", type: "Commodity" },
     { ric: "CL=F", name: "Crude Oil", last: 76.84, change: "-0.31%", type: "Commodity" },
-    { ric: "^TNX", name: "10-Year Treasury Yield", last: 4.178, change: "+0.86%", type: "Bond" }
+    { ric: "^TNX", name: "10-Year Treasury Yield", last: 4.178, change: "+0.86%", type: "Bond" },
+    { ric: "GBPUSD=X", name: "GBP/USD", last: 1.2635, change: "-0.12%", type: "Currency" },
+    { ric: "BTC-USD", name: "Bitcoin USD", last: 43256.78, change: "+2.45%", type: "Cryptocurrency" },
+    { ric: "^VIX", name: "CBOE Volatility Index", last: 13.78, change: "-3.23%", type: "Index" },
+    { ric: "SI=F", name: "Silver", last: 23.41, change: "+0.56%", type: "Commodity" },
+    { ric: "^GSPC", name: "S&P 500", last: 4567.89, change: "+0.75%", type: "Index" }
 ];
 
 export type CrossAssetItem = {
@@ -16,5 +21,5 @@ export type CrossAssetItem = {
     name: string;
     last: number;
     change: string;
-    type: "Index" | "ETF" | "Currency" | "Commodity" | "Bond";
+    type: "Index" | "ETF" | "Currency" | "Commodity" | "Bond" | "Cryptocurrency";
 };
