@@ -7,7 +7,7 @@ This project utilizes a dynamic plugin system to manage the different widgets di
 The plugin system consists of three main parts:
 
 1.  **Plugin Components:**
-    *   Each distinct widget or feature (e.g., News Feed, Intraday Chart, Currency Exchange Rate) is built as a self-contained React component.
+    *   Each distinct widget or feature (e.g., News Feed, Intraday Chart, Currency Exchange Rate, CrossAssetMonitor) is built as a self-contained React component.
     *   These components typically reside within their own folder under `src/plugins/`.
     *   A standard structure for a plugin folder (e.g., `src/plugins/MyPlugin/`) includes:
         *   `MyPlugin.tsx`: The main React component for the plugin.
@@ -16,10 +16,11 @@ The plugin system consists of three main parts:
 
 2.  **Plugin Registry (`src/config/pluginRegistry.ts`):**
     *   This file acts as a central map or dictionary that knows about all *available* plugins in the codebase.
-    *   It exports a `pluginRegistry` object where keys are unique string identifiers (e.g., `'news'`, `'intraday'`, `'currencyExchange'`) and values are configuration objects containing at least the plugin's `id` and the imported React `component`.
+    *   It exports a `pluginRegistry` object where keys are unique string identifiers (e.g., `'news'`, `'intraday'`, `'currencyExchange'`, `'crossAssetMonitor'`) and values are configuration objects containing at least the plugin's `id` and the imported React `component`.
     *   Example entry:
         ```typescript
         import { CurrencyExchangeRate } from '@/plugins/CurrencyExchangeRate';
+        import { CrossAssetMonitor } from '@/plugins/CrossAssetMonitor';
         // ... other imports
 
         export const pluginRegistry: Record<string, PluginConfig> = {
@@ -28,6 +29,10 @@ The plugin system consists of three main parts:
                 id: 'currencyExchange',
                 component: CurrencyExchangeRate,
                 // layout hints can be added here in the future
+            },
+            'crossAssetMonitor': {
+                id: 'crossAssetMonitor',
+                component: CrossAssetMonitor,
             },
         };
         ```
@@ -39,7 +44,7 @@ The plugin system consists of three main parts:
     *   It returns an array of `ActivePluginInfo` objects, each containing at least the `id` of an active plugin.
         ```typescript
         // Example simulation inside pluginService.ts
-        const activePluginIds: string[] = [ 'news', 'currencyExchange', 'history', 'intraday' ];
+        const activePluginIds: string[] = [ 'news', 'currencyExchange', 'history', 'intraday', 'crossAssetMonitor' ];
         return activePluginIds.map(id => ({ id }));
         ```
 
@@ -90,6 +95,7 @@ Follow these steps to add a new plugin widget to the dashboard:
             'currencyExchange',
             'history',
             'intraday',
+            'crossAssetMonitor', // <-- The new CrossAssetMonitor plugin
             'myNewWidgetId' // <-- Add your new plugin's ID
         ];
         ```
