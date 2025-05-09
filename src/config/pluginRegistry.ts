@@ -27,9 +27,9 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         id: 'crossAsset',
         component: CrossAssetMonitor,
     },
-    'currencyExchange': { // <-- Add the new plugin entry
+    'currencyExchange': { // <-- Updated plugin entry to use CrossAssetMonitor
         id: 'currencyExchange',
-        component: CurrencyExchangeRate,
+        component: CrossAssetMonitor,
     },
     'history': {
         id: 'history',
