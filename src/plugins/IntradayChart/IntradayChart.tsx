@@ -21,39 +21,41 @@ export function IntradayChart() {
             <CardContent className="p-4">
                 {/* Removed redundant H1, kept H2 as title */}
                 <h2 className="text-xl text-gray-300 mb-4 text-center">Intraday Chart</h2>
-                <ResponsiveContainer width="100%" height={250}>
-                    <LineChart
-                        data={intradayData}
-                        margin={{ top: 5, right: 20, left: 0, bottom: 40 }} // Adjusted margins
-                    >
-                        <XAxis
-                            dataKey="date"
-                            stroke="#ccc"
-                            tickFormatter={formatTimeTick}
-                            interval="preserveStartEnd" // Show first and last tick
-                            // Consider adding tickCount if too many ticks: tickCount={6}
+                <div data-testid="intraday-chart">
+                    <ResponsiveContainer width="100%" height={250}>
+                        <LineChart
+                            data={intradayData}
+                            margin={{ top: 5, right: 20, left: 0, bottom: 40 }} // Adjusted margins
                         >
-                            <Label
-                                value={chartDate} // Use dynamic date
-                                position="insideBottom"
-                                dy={25} // Adjust vertical position
-                                style={{ fill: '#ccc', fontSize: 14 }}
+                            <XAxis
+                                dataKey="date"
+                                stroke="#ccc"
+                                tickFormatter={formatTimeTick}
+                                interval="preserveStartEnd" // Show first and last tick
+                                // Consider adding tickCount if too many ticks: tickCount={6}
+                            >
+                                <Label
+                                    value={chartDate} // Use dynamic date
+                                    position="insideBottom"
+                                    dy={25} // Adjust vertical position
+                                    style={{ fill: '#ccc', fontSize: 14 }}
+                                />
+                            </XAxis>
+                            <YAxis
+                                stroke="#ccc"
+                                domain={yDomain} // Use calculated or fixed domain
+                                tickFormatter={(val) => val.toFixed(2)}
+                                width={50} // Ensure enough space for labels
                             />
-                        </XAxis>
-                        <YAxis
-                            stroke="#ccc"
-                            domain={yDomain} // Use calculated or fixed domain
-                            tickFormatter={(val) => val.toFixed(2)}
-                            width={50} // Ensure enough space for labels
-                        />
-                        <Tooltip
-                            contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #4b5563', color: '#fff' }}
-                            labelFormatter={(label) => new Date(label).toLocaleString()} // Format tooltip label
-                            formatter={(value: number) => [`$${value.toFixed(2)}`, 'Price']} // Format tooltip value
-                        />
-                        <Line type="monotone" dataKey="price" stroke="#60a5fa" strokeWidth={2} dot={false} />
-                    </LineChart>
-                </ResponsiveContainer>
+                            <Tooltip
+                                contentStyle={{ backgroundColor: '#1f2937', border: '1px solid #4b5563', color: '#fff' }}
+                                labelFormatter={(label) => new Date(label).toLocaleString()} // Format tooltip label
+                                formatter={(value: number) => [`$${value.toFixed(2)}`, 'Price']} // Format tooltip value
+                            />
+                            <Line type="monotone" dataKey="price" stroke="#60a5fa" strokeWidth={2} dot={false} />
+                        </LineChart>
+                    </ResponsiveContainer>
+                </div>
             </CardContent>
         </Card>
     );
