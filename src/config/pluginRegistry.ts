@@ -2,7 +2,7 @@ import React from 'react';
 import { NewsFeed } from '@/plugins/NewsFeed';
 import { HistoricalChart } from '@/plugins/HistoricalChart';
 import { IntradayChart } from '@/plugins/IntradayChart';
-import { CurrencyExchangeRate } from '@/plugins/CurrencyExchangeRate';
+import { CrossAssetMonitor } from '@/plugins/CrossAssetMonitor';
 
 // Define a type for better safety (optional but recommended)
 export type PluginComponentType = React.ComponentType<any>; // Use specific props type if needed
@@ -22,9 +22,9 @@ export const pluginRegistry: Record<string, PluginConfig> = {
         // Example layout hint:
         // layout: { colSpan: 2 }
     },
-    'currencyExchange': { // <-- Add the new plugin entry
-        id: 'currencyExchange',
-        component: CurrencyExchangeRate,
+    'crossAssetMonitor': { // <-- Add the new plugin entry
+        id: 'crossAssetMonitor',
+        component: CrossAssetMonitor,
     },
     'history': {
         id: 'history',
