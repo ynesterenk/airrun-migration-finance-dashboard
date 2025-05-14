@@ -1,1 +1,0 @@
-export { CrossAssetMonitor } from './CrossAssetMonitor';
