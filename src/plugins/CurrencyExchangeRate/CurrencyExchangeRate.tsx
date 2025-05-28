@@ -19,30 +19,30 @@ export function CurrencyExchangeRate() {
                 <h2 className="text-xl text-gray-300 mb-4 text-center">Currency Exchange Rate</h2>
                 <table className="w-full text-sm">
                     <thead className="text-gray-400 border-b border-gray-700">
-                    <tr>
-                        <th className="text-left py-2 px-2">Flag</th>
-                        <th className="text-left py-2 px-2">Currency</th>
-                        <th className="text-right py-2 px-2">Price</th>
-                        <th className="text-right py-2 px-2">Day</th>
-                        <th className="text-right py-2 px-2">Change %</th>
-                    </tr>
+                        <tr>
+                            <th className="text-left py-2 px-2">Flag</th>
+                            <th className="text-left py-2 px-2">Currency</th>
+                            <th className="text-right py-2 px-2">Price</th>
+                            <th className="text-right py-2 px-2">Day</th>
+                            <th className="text-right py-2 px-2">Change %</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {mockCurrencyData.map((item: CurrencyRateItem) => ( // Implicit return
-                        <tr key={item.currency} className="border-b border-gray-800">
-                            <td className="py-2 px-2 text-xl">{item.flag}</td> {/* Flag placeholder */}
-                            <td className="py-2 px-2 text-blue-400">{item.currency}</td>
-                            <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
-                                {item.price.toFixed(item.currency === 'USDJPY' ? 3 : 5)} {/* Adjust precision */}
-                            </td>
-                            <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
-                                {item.dayChange.toFixed(item.currency === 'USDJPY' ? 3 : 5)} {/* Adjust precision */}
-                            </td>
-                            <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
-                                {formatPercentChange(item.percentChange)}
-                            </td>
-                        </tr>
-                    ))}
+                        {mockCurrencyData.map((item: CurrencyRateItem) => (
+                            <tr key={item.currency} className="border-b border-gray-800">
+                                <td className="py-2 px-2 text-xl">{item.flag}</td>
+                                <td className="py-2 px-2 text-blue-400">{item.currency}</td>
+                                <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
+                                    {item.price.toFixed(item.currency === 'USDJPY' ? 3 : 5)}
+                                </td>
+                                <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
+                                    {item.dayChange.toFixed(item.currency === 'USDJPY' ? 3 : 5)}
+                                </td>
+                                <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
+                                    {formatPercentChange(item.percentChange)}
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </CardContent>
