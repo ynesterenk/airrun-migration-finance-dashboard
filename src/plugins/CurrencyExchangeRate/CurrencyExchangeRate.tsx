@@ -1,4 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
 import { mockCurrencyData, CurrencyRateItem } from "./data";
 
 // Helper function to determine text color based on value
@@ -17,34 +25,34 @@ export function CurrencyExchangeRate() {
         <Card className="bg-gray-900 text-white"> {/* Same layout slot as CrossAsset */}
             <CardContent className="p-4">
                 <h2 className="text-xl text-gray-300 mb-4 text-center">Currency Exchange Rate</h2>
-                <table className="w-full text-sm">
-                    <thead className="text-gray-400 border-b border-gray-700">
-                        <tr>
-                            <th className="text-left py-2 px-2">Flag</th>
-                            <th className="text-left py-2 px-2">Currency</th>
-                            <th className="text-right py-2 px-2">Price</th>
-                            <th className="text-right py-2 px-2">Day</th>
-                            <th className="text-right py-2 px-2">Change %</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table>
+                    <TableHeader>
+                        <TableRow className="border-b border-gray-700">
+                            <TableHead className="text-left text-gray-400">Flag</TableHead>
+                            <TableHead className="text-left text-gray-400">Currency</TableHead>
+                            <TableHead className="text-right text-gray-400">Price</TableHead>
+                            <TableHead className="text-right text-gray-400">Day</TableHead>
+                            <TableHead className="text-right text-gray-400">Change %</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
                         {mockCurrencyData.map((item: CurrencyRateItem) => (
-                            <tr key={item.currency} className="border-b border-gray-800">
-                                <td className="py-2 px-2 text-xl">{item.flag}</td>
-                                <td className="py-2 px-2 text-blue-400">{item.currency}</td>
-                                <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
+                            <TableRow key={item.currency} className="border-b border-gray-800">
+                                <TableCell className="text-xl">{item.flag}</TableCell>
+                                <TableCell className="text-blue-400">{item.currency}</TableCell>
+                                <TableCell className={`text-right ${getValueColor(item.percentChange)}`}>
                                     {item.price.toFixed(item.currency === 'USDJPY' ? 3 : 5)}
-                                </td>
-                                <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
+                                </TableCell>
+                                <TableCell className={`text-right ${getValueColor(item.percentChange)}`}>
                                     {item.dayChange.toFixed(item.currency === 'USDJPY' ? 3 : 5)}
-                                </td>
-                                <td className={`text-right py-2 px-2 ${getValueColor(item.percentChange)}`}>
+                                </TableCell>
+                                <TableCell className={`text-right ${getValueColor(item.percentChange)}`}>
                                     {formatPercentChange(item.percentChange)}
-                                </td>
-                            </tr>
+                                </TableCell>
+                            </TableRow>
                         ))}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </CardContent>
         </Card>
     );
